@@ -3,7 +3,7 @@ package com.spring.chatty.common.response;
 
 import com.spring.chatty.domain.chatroom.dto.res.ChatRoomResDto;
 import com.spring.chatty.domain.member.dto.res.UserResDto;
-import com.spring.chatty.domain.message.dto.MessageResDto;
+import com.spring.chatty.domain.message.dto.ChatMessage;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.AllArgsConstructor;
@@ -21,7 +21,7 @@ public class CommonResponse {
     @Schema(description = "반환 오브젝트", anyOf = {
             UserResDto.class,
             ChatRoomResDto.class,
-            MessageResDto.class
+            ChatMessage.class
     })
     private Object result;
 

@@ -10,6 +10,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -28,5 +31,12 @@ public class UserService {
         User user = typeChange.userCreateReqDtoToUser(dto, encodedPassword);
         User savedUser = userRepository.save(user);
         return typeChange.userToUserResDto(savedUser);
+    }
+    @Transactional(readOnly = true)
+    public List<UserResDto> getAllUsers() {
+        return userRepository.findAll()
+                .stream()
+                .map(typeChange::userToUserResDto)
+                .collect(Collectors.toList());
     }
 }

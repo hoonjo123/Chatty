@@ -1,7 +1,7 @@
 package com.spring.chatty.domain.message.domain;
 
 import com.spring.chatty.domain.chatroom.domain.ChatRoom;
-import com.spring.chatty.domain.member.domain.User;  // 올바른 패키지 경로로 수정
+import com.spring.chatty.domain.member.domain.User;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,4 +33,7 @@ public class Message {
 
     @Column(nullable = false)
     private LocalDateTime sentAt;
+
+    @Column(nullable = false)
+    private String username;
 }
